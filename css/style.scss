@@ -1,0 +1,521 @@
+@import "_var.scss";
+@import "_font.scss";
+
+
+// RESET CSS
+* {
+	box-sizing: border-box;
+	
+	margin: 0;
+	padding: 0;
+
+
+	img {
+		width: 100%;
+		height: 100%;
+		
+		object-fit: cover;
+	}
+}
+
+
+// BODY WEBSITE
+html, body {
+	position: relative;
+
+	width: 100%;
+	height: 100vh;
+
+	background: $clr-bg;
+	color: $clr-text;
+
+	font-family: $fontCode2;
+	font-size: 16px;
+	font-weight: 200;
+
+	overflow-x: hidden;
+
+
+	// QUIZ PAGE __ HEADER
+	.qp__header {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		display: flex;
+		justify-content: space-between;
+
+		border-bottom: 2px solid $clr-text;
+
+		width: 100%;
+		height: 50px;
+
+		background: $clr-bg;
+
+		z-index: 999;
+
+
+		// QUIZ PAGE __ LOGO
+		&__logo	{
+			display: flex;
+			align-items: center;
+
+			height: 100%;
+			margin-left: 15px;
+
+			color: $clr-text;
+
+			font-family: $fontEng_1;
+			font-size: 1.5rem;
+			text-decoration: none;
+		}
+
+
+		// 	QUIZ PAGE __ MENU BUTTON
+		&__menu-btn {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			width: 50px;
+			height: 100%;
+			gap: 6px;
+
+
+			&::before, &::after {
+				content: "";
+				
+				width: 30px;
+				height: 4px;
+
+				background: $clr-text;
+
+				transition: 0.3s;
+			}
+
+
+			&.open::before {position: absolute; transform: rotate(45deg);}
+			&.open::after {position: absolute; transform: rotate(135deg);}
+		}
+	}
+
+
+	// QUIZ PAGE __ NAVICATION
+	.qp__menu {
+		position: absolute;
+		top: -100%;
+		left: 0;
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		
+		width: 100%;
+		height: 100%;
+		gap: 50px;
+
+		background: $clr-bg;
+
+		transition: 0.5s;
+		z-index: 99;
+
+
+		&.open {top: 0;}
+		
+		
+		a {
+			position: relative;
+			width: auto;
+			height: auto;
+			
+			color: $clr-text;
+
+			font-family: $fontEng_2;
+			font-size: 1.5rem;
+			text-decoration: none;
+
+			overflow: hidden;
+		}
+	}
+
+
+	// QUIZ PAGE __ MAIN
+	.qp__content {
+		position: relative;
+
+		width: 100%;
+		margin-top: 80px;
+		margin-bottom: 20px;
+		padding: 0 15px;
+
+
+		// QUIZ PAGE __ QUIZ TITLE
+		&__title h2 {
+			display: flex;
+			align-items: center;
+			
+			width: 100%;
+			height: 50px;
+			margin-bottom: 15px;
+
+			font-family: 'DotGothic16', sans-serif;
+			font-size: 1.2rem;
+			letter-spacing: 0.2rem;
+
+
+			span {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				border-radius: 3px;
+
+				width: 35px;
+				height: 35px;
+				margin-left: 1px;
+				margin-right: 10px;
+
+				background: $clr-text;
+				color: $clr-bg;
+			}
+		}
+
+
+		// QUIZ PAGE __ CODE BLOCK
+		.qp__code {
+			position: relative;
+			
+			display: flex;
+		
+			width: 100%;
+			height: auto;
+			margin-bottom: 40px;
+
+
+			code {
+				@include box;
+    
+				width: calc(100% - 5px);
+				height: auto;
+				padding: 15px;
+    
+				font-size: 1rem;
+				line-height: 1.2;
+			}
+		}
+
+
+		// QUIZ PAGE __ SELECT FORM
+		.qp__select-form {
+			position: relative;
+			width: 100%;
+
+
+			// QUIZ PAGE __ OPTIONS
+			&__option {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+
+				@include box;
+
+				width: calc(80% - 5px);
+				height: 50px;
+				margin: auto;
+				margin-top: 15px;
+
+
+				&:nth-child(1) {margin-top: 0;}
+
+
+				// QUIZ PAGE __ INPUT
+				input[type="radio"] {display: none;}
+
+
+				// QUIZ PAGE __ LABEL
+				label {
+					position: relative;
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					width: 100%;
+					height: 100%;
+					padding: 0 20px;
+
+					font-size: 1.3rem;
+					font-weight: 600;
+				}
+
+
+				// QUIZ PAGE __ OPTION CHECKED
+				input[type="radio"]:checked + label {background: $clr-clicked;}
+			}
+
+
+			// QUIZ PAGE __ CHECKED BUTTON
+			&__btn {
+				width: 100%;
+				height: 50px;
+				margin-top: 45px;
+
+
+				button {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					@include box;
+					
+					width: calc(100% - 5px);
+					height: 50px;
+					
+					background: $clr-clicked;
+					color: $clr-text;
+					
+					font-family: $fontCode2;
+					font-size: 1.3rem;
+					font-weight: 600;
+					
+					
+					// QUIZ PAGE __ BUTTON -- DISABLED
+					&:disabled {
+						border-color: $clr-unclick;
+						box-shadow: none;
+
+						background: none;
+						color: $clr-unclick;
+					}
+				}
+			}
+
+
+			// QUIZ PAGE __ TRUE & FALSE RESULT
+			&--result {
+				position: absolute;
+				top: 40%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				width: 200px;
+				height: 200px;
+
+				pointer-events: none;
+
+
+				// QUIZ PAGE __ FALSE ICON
+				span#false {
+					position: absolute;
+					transform: rotate(45deg);
+
+					display: none;
+
+					width: 150px;
+					height: 150px;
+
+					opacity: 0.8;
+
+
+					&::before {
+						content: "";
+						
+						position: absolute;
+						top: 50%;
+						left: 0;
+						transform: translateY(-50%);
+						
+						width: 100%;
+						height: 35px;
+						
+						background: $clr-false;
+					}
+
+
+					&::after {
+						content: "";
+						
+						position: absolute;
+						top: 0;
+						left: 50%;
+						transform: translateX(-50%);
+						
+						width: 35px;
+						height: 100%;
+						
+						background: $clr-false;
+					}
+				}
+
+
+				// QUIZ PAGE __ TRUE ICON
+				span#true {
+					position: absolute;
+
+					display: none;
+
+					border: 35px solid $clr-true;
+					border-radius: 50%;
+					
+					width: 150px;
+					height: 150px;
+					
+					opacity: 0.8;
+					animation: flash 0.5s infinite;
+
+
+					@keyframes flash {
+						0% {border-color: $clr-true;}
+						33% {border-color: $clr-true;}
+						66% {border-color: transparent;}
+						100% {border-color: transparent;}
+					}
+				}
+			}
+		}
+	}
+
+
+	// QUIZ PAGE __ CONGRATULATE
+	.qp--congratulate {
+		position: fixed;
+		top: 0;
+		left: 0;
+		transform: scale(0);
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		width: 100%;
+		height: 100vh;
+
+		transition: 0.4s;
+		
+		
+		&::before {
+			content: "";
+
+			position: absolute;
+			top: 0;
+			left: 0;
+			
+			width: 100%;
+			height: 100vh;
+
+			background: $clr-bg;
+			opacity: 0.9;
+
+			z-index: -1;
+		}
+
+
+		// QUIZ PAGE __ CONFETTI FALLING ANIMATION
+		canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			
+			width: 100vw;
+			height: 100vh;
+			
+			pointer-events: none;
+		}
+	
+	
+		// QUIZ PAGE __ CONGRATULATE CONTAINER
+		&__container {
+			position: relative;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			@include box;
+
+			width: 350px;
+			height: 450px;
+			padding: 20px;
+			gap: 50px;
+
+			background: $clr-bg;
+
+
+			&__img {
+				position: relative;
+
+				width: 300px;
+				height: 150px;
+
+				overflow: hidden;
+
+
+				span.rainbow {
+					position: absolute;
+					left: 50%;
+					transform-origin: bottom;
+
+					border: 10px solid var(--clr);
+					border-bottom: none;
+
+					animation: rainbow 3s infinite;
+
+
+					&:nth-child(1) {@include rainbow(00px, 150px, 300px); animation-delay: 0.3s;}
+					&:nth-child(2) {@include rainbow(10px, 140px, 280px); animation-delay: 0.35s;}
+					&:nth-child(3) {@include rainbow(20px, 130px, 260px); animation-delay: 0.4s;}
+					&:nth-child(4) {@include rainbow(30px, 120px, 240px); animation-delay: 0.45s;}
+					&:nth-child(5) {@include rainbow(40px, 110px, 220px); animation-delay: 0.5s;}
+					&:nth-child(6) {@include rainbow(50px, 100px, 200px); animation-delay: 0.55s;}
+					&:nth-child(7) {@include rainbow(60px, 090px, 180px); animation-delay: 0.6s;}
+					
+					
+					// RAINBOW'S ANIMATION
+					@keyframes rainbow {
+						30% {transform: rotate(180deg);}
+						55% {transform: rotate(180deg);}
+						85% {transform: rotate(360deg);}
+						100% {transform: rotate(360deg);}
+					}
+				}
+			}
+
+
+			&__content {font-family: 'DotGothic16', sans-serif; text-align: center;}
+			&__content a {
+				display: inline-block;
+
+				@include box;
+
+				margin-top: 40px;
+				padding: 10px;
+
+				color: $clr-text;
+				text-decoration: none;
+			}
+
+
+			// QUIZ PAGE __ CONGATULATE BLOCK CLOSED BUTTON
+			button#closed {
+				position: absolute;
+				top: 0;
+				right: 0;
+
+				border: none;
+				width: 50px;
+				height: 50px;
+				
+				background: transparent;
+
+				font-weight: 700;
+			}
+		}
+	}
+}
