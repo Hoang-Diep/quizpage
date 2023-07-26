@@ -24,7 +24,7 @@ html, body {
 	position: relative;
 
 	width: 100%;
-	height: 100vh;
+	height: auto;
 
 	background: $clr-bg;
 	color: $clr-text;
@@ -395,8 +395,6 @@ html, body {
 		
 		width: 100%;
 		height: 100vh;
-
-		transition: 0.4s;
 		
 		
 		&::before {
@@ -422,8 +420,8 @@ html, body {
 			top: 0;
 			left: 0;
 			
-			width: 100vw;
-			height: 100vh;
+			// width: 100%;
+			// height: 100%;
 			
 			pointer-events: none;
 		}
@@ -431,7 +429,10 @@ html, body {
 	
 		// QUIZ PAGE __ CONGRATULATE CONTAINER
 		&__container {
-			position: relative;
+			position: fixed;
+			top: -100%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 
 			display: flex;
 			flex-direction: column;
@@ -446,6 +447,7 @@ html, body {
 			gap: 50px;
 
 			background: $clr-bg;
+			transition: 0.5s;
 
 
 			&__img {
@@ -462,19 +464,16 @@ html, body {
 					left: 50%;
 					transform-origin: bottom;
 
-					border: 10px solid var(--clr);
-					border-bottom: none;
-
 					animation: rainbow 3s infinite;
 
 
-					&:nth-child(1) {@include rainbow(00px, 150px, 300px); animation-delay: 0.3s;}
-					&:nth-child(2) {@include rainbow(10px, 140px, 280px); animation-delay: 0.35s;}
-					&:nth-child(3) {@include rainbow(20px, 130px, 260px); animation-delay: 0.4s;}
-					&:nth-child(4) {@include rainbow(30px, 120px, 240px); animation-delay: 0.45s;}
-					&:nth-child(5) {@include rainbow(40px, 110px, 220px); animation-delay: 0.5s;}
-					&:nth-child(6) {@include rainbow(50px, 100px, 200px); animation-delay: 0.55s;}
-					&:nth-child(7) {@include rainbow(60px, 090px, 180px); animation-delay: 0.6s;}
+					&:nth-child(1) {@include rainbow(0, 14px); animation-delay: 0.3s;}
+					&:nth-child(2) {@include rainbow(1, 14px); animation-delay: 0.35s;}
+					&:nth-child(3) {@include rainbow(2, 14px); animation-delay: 0.4s;}
+					&:nth-child(4) {@include rainbow(3, 14px); animation-delay: 0.45s;}
+					&:nth-child(5) {@include rainbow(4, 14px); animation-delay: 0.5s;}
+					&:nth-child(6) {@include rainbow(5, 14px); animation-delay: 0.55s;}
+					&:nth-child(7) {@include rainbow(6, 14px); animation-delay: 0.6s;}
 					
 					
 					// RAINBOW'S ANIMATION
@@ -497,6 +496,7 @@ html, body {
 				margin-top: 40px;
 				padding: 10px;
 
+				background: $clr-clicked;
 				color: $clr-text;
 				text-decoration: none;
 			}
@@ -513,8 +513,10 @@ html, body {
 				height: 50px;
 				
 				background: transparent;
+				color: $clr-text;
 
-				font-weight: 700;
+				
+				span {font-size: 35px; font-weight: 700;}
 			}
 		}
 	}

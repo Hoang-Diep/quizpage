@@ -10,6 +10,7 @@ function checkAnswer() {
     var falseAnswer = document.querySelector(".qp__select-form--result #false"),
         trueAnswer  = document.querySelector(".qp__select-form--result #true"),
         congrate    = document.querySelector(".qp--congratulate"),
+        congrateBox = document.querySelector(".qp--congratulate__container"),
         closedBtn   = document.querySelector("button#closed");
 
     // CHECK USER'S ANSWER
@@ -26,6 +27,7 @@ function checkAnswer() {
                 function congratulate() {
                     trueAnswer.style.display = "none";
                     congrate.style.transform = "scale(1)";
+                    congrateBox.style.top = "50%";
                 }
                 
             } else {
@@ -37,9 +39,10 @@ function checkAnswer() {
             }
         }
 	}
-
+    
     // CLOSE THE CONGRATULATE BLOCK
     closedBtn.onclick = function() {
-        congrate.style.transform = "scale(0)";
+        congrateBox.style.top = "-100%";
+        setTimeout(() => congrate.style.transform = "scale(0)", 200);
     }
 }

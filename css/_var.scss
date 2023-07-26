@@ -21,12 +21,14 @@ $clr-unclick: #999;
     border-radius: 5px;
 }
 
-@mixin rainbow($loca, $hSize, $wSize) {
-    top: $loca;
-    left: $loca;
+@mixin rainbow($id, $size) {
+    top: calc($size * $id);
+    left: calc($size * $id);
     
-    border-radius: $hSize $hSize 0 0;
+    border: $size solid var(--clr);
+    border-bottom: none;
+    border-radius: calc(150px - $size * $id) calc(150px - $size * $id) 0 0;
 
-    width: $wSize;
-    height: $hSize;
+    width: calc(300px - $size * $id * 2);
+    height: calc(150px - $size * $id);
 }
